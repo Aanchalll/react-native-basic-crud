@@ -15,6 +15,7 @@ export default function App() {
           name="Home"
           component={HomeScreen}
           options={{ title: 'Welcome!' }}
+          
         />
         <Stack.Screen
           name="To Do List"
