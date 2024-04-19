@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Button, FlatList, Text, TextInput, View } from 'react-native';
 
-export default function ToDoComponent({ styles }) {
+export default function FormComponent({ styles }) {
     const [text, setText] = useState('')
     const [error, setError] = useState('')
     const [list, setList] = useState([])
@@ -28,18 +28,28 @@ export default function ToDoComponent({ styles }) {
             <View style={styles.inputContainer}>
                 <TextInput
                     style={styles.input1}
-                    placeholder="Start Typing"
+                    placeholder="Name"
                     onChangeText={newText => setText(newText)}
                     value={text}
                 />
-                 
                 <Button title='Add'
                     onPress={() => { Add(text); }}
                     style={styles.inputButton}
                 />
-
             </View>
 
+            <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.input1}
+                    placeholder="Surname"
+                    onChangeText={newText => setText(newText)}
+                    value={text}
+                />
+                <Button title='Add'
+                    onPress={() => { Add(text); }}
+                    style={styles.inputButton}
+                />
+            </View>
             {error ? <Text style={styles.error}>{error}</Text> : ''}
 
             {list && list?.length > 0 && <Text style={styles.taskHeading}>Task List:</Text>}

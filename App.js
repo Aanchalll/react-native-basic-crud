@@ -1,9 +1,10 @@
-import { Button, View } from 'react-native';
+import { View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import ToDoPage from './src/pages/todo-list';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CalculatorPage from './src/pages/calculator';
 import AboutPage from './src/pages/about';
+import ButtonBase from './src/components/base/button';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,7 +16,7 @@ export default function App() {
           name="Home"
           component={HomeScreen}
           options={{ title: 'Welcome!' }}
-          
+
         />
         <Stack.Screen
           name="To Do List"
@@ -40,24 +41,33 @@ export default function App() {
 const HomeScreen = ({ navigation }) => {
   return (
     <View>
-      <Button
-        title="About"
-        onPress={() =>
-          navigation.navigate('About', { name: 'Jane' })
-        }
+
+      <ButtonBase onPress={() =>
+        navigation.navigate('About', { name: 'Jane' })
+      }
+        text='About'
       />
-      <Button
-        title="To Do List"
+
+      <ButtonBase
         onPress={() =>
           navigation.navigate('To Do List', { name: 'Jane' })
         }
+        text='To Do List'
       />
-      <Button
-        title="Calculator"
+
+      <ButtonBase
         onPress={() =>
           navigation.navigate('Calculator', { name: 'Jane' })
         }
+        text='Calculator'
       />
+
     </View>
   );
 };
+
+
+
+
+
+
