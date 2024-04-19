@@ -1,30 +1,45 @@
 
 import { Image, SafeAreaView, ScrollView, Text } from 'react-native';
-// import hey from './assets/images'
+import { useState } from 'react';
+import Checkbox from '../base/checkbox/index';
 
+
+// const image = { uri: 'https://legacy.reactjs.org/logo-og.png' };
 export default function AboutComponent({ styles }) {
+
+    const [show, setShow] = useState(true)
 
     return (
         <SafeAreaView>
 
-            <ScrollView>
+            <Checkbox
+                label={'Show Content'}
+                value={show}
+                onSelect={() => { setShow(!show) }}
+                isSelected={show}
+                disabled={false}
+            />
+            {show ?
+                <ScrollView>
 
-                <Text style={styles.textContainer}>
-                    {array[0]}
                     <Image
-                        source={require('../../../assets/images.png')}
+                        source={{
+                            uri: 'https://reactnative.dev/img/tiny_logo.png',
+                        }}
                         style={styles.image}
                     />
 
-                    {array[1]}
-                    <Image
-                        source={require('../../../assets/images.png')}
-                        style={styles.image}
-                    />
-                    {array[1]}
+                    <Text style={styles.textContainer}>
+                        {array[0]}
+                        {array[1]}
+                        {array[1]}
+                        {array[1]}
+                        {array[1]}
+                        {array[1]}
+                        {array[1]}
+                    </Text>
+                </ScrollView> : ''}
 
-                </Text>
-            </ScrollView>
         </SafeAreaView>
     );
 }
