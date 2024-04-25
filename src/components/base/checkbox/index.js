@@ -1,8 +1,7 @@
 import React, { memo } from 'react';
 import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import { CheckboxOffIconWeb, CheckboxOnIconWeb } from '../../../utils/icons';
-// import { CheckboxOnIconWeb, CheckboxOffIconWeb } from 'icons';
-// import { baseStyleGuide } from 'partner-style-guides';
+
 
 const styles = StyleSheet.create({
     itemWrapper: {
@@ -10,7 +9,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     iconWrapper: {
-        marginRight: 20
+        marginRight: 20,
+        marginLeft: 16
     },
     itemLabel: {
         color: 'black',
