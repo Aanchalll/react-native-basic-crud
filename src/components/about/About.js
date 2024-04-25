@@ -3,11 +3,9 @@ import { Image, SafeAreaView, ScrollView, Text } from 'react-native';
 import { useState } from 'react';
 import Checkbox from '../base/checkbox/index';
 
-
-// const image = { uri: 'https://legacy.reactjs.org/logo-og.png' };
 export default function AboutComponent({ styles }) {
 
-    const [show, setShow] = useState(true)
+    const [show, setShow] = useState(false)
 
     return (
         <SafeAreaView>

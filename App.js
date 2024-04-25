@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CalculatorPage from './src/pages/calculator';
 import AboutPage from './src/pages/about';
 import ButtonBase from './src/components/base/button';
+import FormPage from './src/pages/form';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +34,11 @@ export default function App() {
           component={AboutPage}
           options={{ title: 'About' }}
         />
+        <Stack.Screen
+          name="Form"
+          component={FormPage}
+          options={{ title: 'Form Page' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -60,6 +66,13 @@ const HomeScreen = ({ navigation }) => {
           navigation.navigate('Calculator', { name: 'Jane' })
         }
         text='Calculator'
+      />
+
+      <ButtonBase
+        onPress={() =>
+          navigation.navigate('Form', { name: 'Jane' })
+        }
+        text='Form'
       />
 
     </View>
