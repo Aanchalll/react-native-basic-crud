@@ -66,8 +66,9 @@ const modalStylesWebsite = StyleSheet.create({
         backgroundColor: 'rgb(255 213 213)',//baseStyleGuide.white,
         borderRadius: 4,
         padding: 20,
-        width: 482,
+        width: 400,
         maxHeight: '100vh',
+        maxWidth: '100vh',
         border: 'solid 1px black'
     },
     title: {
@@ -83,8 +84,8 @@ const modalStylesWebsite = StyleSheet.create({
     actionLabelWrapper: {
         justifyContent: 'center',
         width: 110,
-        height: 48,
-        backgroundColor: 'black',//baseStyleGuide.secondaryColor,
+        height: 40,
+        backgroundColor: 'grey',//baseStyleGuide.secondaryColor,
         borderRadius: 4
     },
     primaryLabel: {
