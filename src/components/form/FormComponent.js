@@ -3,9 +3,11 @@ import { useState } from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
 import Checkbox from '../base/checkbox';
 import validations from '../../utils/validations';
+import ConfirmationModal from '../base/Modal'
+import { Tnc } from '../../utils/constants';
 
 export default function FormComponent({ styles }) {
-    const [text, setText] = useState({ name: '', contact: '', email: '', termsAndConditions: false })
+    const [text, setText] = useState({ name: '', contact: '', email: '', termsAndConditions: false, isModal: false })
     const [error, setError] = useState('')
     const [finalDetails, setfinalDetails] = useState(null);
 
@@ -93,15 +95,36 @@ export default function FormComponent({ styles }) {
                         />
                     </View>
                     <Error value={error.email} styles={styles} />
-                    <View style={styles.checkboxContainer}>
+                    <View style={styles.checkboxContainer} >
                         <Checkbox
-                            label={'I agree to the terms and conditions.'}
+                            label={
+                                <Text> I agree to the {' '}
+                                    <Text
+                                        style={{ color: 'blue' }}
+                                        onPress={() => { setText({ ...text, isModal: true }); }}
+                                    >
+                                        terms and conditions
+                                    </Text>
+                                    .
+                                </Text>
+                            }
                             value={text.termsAndConditions}
                             onSelect={() => { setText({ ...text, termsAndConditions: !text.termsAndConditions }) }}
                             isSelected={text.termsAndConditions}
                             disabled={false}
+
                         />
                     </View>
+                    {text?.isModal &&
+                        <ConfirmationModal
+                            visible={text?.isModal}
+                            isDesktop={true}
+                            title={"Terms and Conditions"}
+                            description={Tnc}
+                            onPrimaryButtonPress={() => { setText({ ...text, isModal: false }); }}
+                            primaryButtonText={'Close'}
+                        />
+                    }
                     <Error value={error.termsAndConditions} styles={styles} />
                     <View style={styles.checkboxContainer}>
                         <Button title='Submit'

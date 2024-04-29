@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between'
     },
-    resultContainer:{
+    resultContainer: {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
@@ -71,6 +71,9 @@ const styles = StyleSheet.create({
         paddingTop: 8,
         paddingBottom: 8,
         textAlign: 'center', fontSize: 20, margin: 20
+    },
+    modal: {
+        width: '50px'
     }
 
 });
