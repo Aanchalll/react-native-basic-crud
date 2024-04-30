@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { View, Text, StyleSheet, Modal, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Modal, TouchableOpacity, ScrollView } from 'react-native';
 
 function ConfirmationModal(props) {
     const { visible,
@@ -14,46 +14,50 @@ function ConfirmationModal(props) {
     const isArray = Array.isArray(description);
     return (
         <Modal visible={visible} transparent>
-            <View
-                style={[baseStyleSheet.modalEnvelop,
-                baseStyleSheet.contentCenter]}
-            >
-                <View style={modalStyles.wrapper}>
-                    <View style={modalStyles.titleWrapper}>
-                        <Text style={modalStyles.title}>{title}</Text>
-                    </View>
-                    <Text style={modalStyles.description}>
-                        {!isArray ?
-                            description :
-                            description?.map((value) => {
-                                return (
-                                    <View style={{ margin: '4px' }}>{value}</View>
-                                )
-                            })
-                        }
-                    </Text>
-                    <View style={{ marginTop: 20, flexDirection: 'row', alignSelf: 'flex-end' }}>
-                        {secondaryButtonText &&
-                            <TouchableOpacity
-                                onPress={onSecondaryButtonPress}
-                                style={[modalStyles.actionLabelWrapper, isDesktop ? { backgroundColor: 'transparent', marginRight: 10 } : null]}
-                            >
-                                <Text style={modalStyles.secondaryLabel}>
-                                    {secondaryButtonText}
-                                </Text>
-                            </TouchableOpacity>
-                        }
-                        {primaryButtonText &&
-                            <TouchableOpacity
-                                onPress={onPrimaryButtonPress}
-                                style={modalStyles.actionLabelWrapper}
-                            >
-                                <Text style={modalStyles.primaryLabel}>{primaryButtonText}</Text>
-                            </TouchableOpacity>
-                        }
+            <ScrollView>
+                <View
+                    style={[baseStyleSheet.modalEnvelop,
+                    baseStyleSheet.contentCenter]}
+                >
+                    <View style={modalStyles.wrapper}>
+                        <View style={modalStyles.titleWrapper}>
+                            <Text style={modalStyles.title}>{title}</Text>
+                        </View>
+                        <Text style={modalStyles.description}>
+
+                            {!isArray ?
+                                description :
+                                description?.map((value, index) => {
+                                    return (
+                                        <View key={value + index} style={{ margin: '4px' }}><Text>{value}</Text></View>
+                                    )
+                                })
+                            }
+
+                        </Text>
+                        <View style={{ marginTop: 20, flexDirection: 'row', alignSelf: 'flex-end' }}>
+                            {secondaryButtonText &&
+                                <TouchableOpacity
+                                    onPress={onSecondaryButtonPress}
+                                    style={[modalStyles.actionLabelWrapper, isDesktop ? { backgroundColor: 'transparent', marginRight: 10 } : null]}
+                                >
+                                    <Text style={modalStyles.secondaryLabel}>
+                                        {secondaryButtonText}
+                                    </Text>
+                                </TouchableOpacity>
+                            }
+                            {primaryButtonText &&
+                                <TouchableOpacity
+                                    onPress={onPrimaryButtonPress}
+                                    style={modalStyles.actionLabelWrapper}
+                                >
+                                    <Text style={modalStyles.primaryLabel}>{primaryButtonText}</Text>
+                                </TouchableOpacity>
+                            }
+                        </View>
                     </View>
                 </View>
-            </View>
+            </ScrollView>
         </Modal>
     );
 }
@@ -63,13 +67,15 @@ export default memo(ConfirmationModal);
 
 const modalStylesWebsite = StyleSheet.create({
     wrapper: {
-        backgroundColor: 'rgb(255 213 213)',//baseStyleGuide.white,
+        margin:44,
+        backgroundColor: 'rgb(219 240 255)',//baseStyleGuide.white,
         borderRadius: 4,
         padding: 20,
-        width: 400,
-        maxHeight: '100vh',
-        maxWidth: '100vh',
-        border: 'solid 1px black'
+        minWidth: 200,
+        maxHeight: '80vh',
+        maxWidth: 'auto',
+        border: 'solid 1px black',
+        overflow: 'scroll'
     },
     title: {
         fontSize: 25,
@@ -78,9 +84,9 @@ const modalStylesWebsite = StyleSheet.create({
     titleWrapper: {
         marginBottom: 10
     },
-    description: {
-        overflow: 'auto'
-    },
+    // description: {
+    //     overflow: 'scroll'
+    // },
     actionLabelWrapper: {
         justifyContent: 'center',
         width: 110,
