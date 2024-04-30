@@ -54,13 +54,13 @@ export default function FormComponent({ styles }) {
     return (
         <View>
             <Text style={styles.formHeading} >
-                {!finalDetails ? 'Details Form' : 'Entered Details'}
+                {!finalDetails ? 'Details' : 'Entered Details'}
             </Text>
             {!finalDetails ?
-                <form>
+                <View>
 
                     <View style={styles.inputContainer}>
-                        <label htmlFor="name">Name</label>
+                        <Text htmlFor="name">Name</Text>
                         <TextInput
                             style={styles.input1}
                             id='name'
@@ -71,7 +71,7 @@ export default function FormComponent({ styles }) {
                     </View>
                     <Error value={error.name} styles={styles} />
                     <View style={styles.inputContainer}>
-                        <label htmlFor="contact-number">Contact Number</label>
+                        <Text htmlFor="contact-number">Contact Number</Text>
                         <TextInput
                             id='contact-number'
                             keyboardType='numeric'
@@ -84,7 +84,7 @@ export default function FormComponent({ styles }) {
                     </View>
                     <Error value={error.contact ? error.contact : ''} styles={styles} />
                     <View style={styles.inputContainer}>
-                        <label htmlFor="email-address">Email Address</label>
+                        <Text htmlFor="email-address">Email Address</Text>
                         <TextInput
                             keyboardType='email-address'
                             id='email-address'
@@ -112,7 +112,6 @@ export default function FormComponent({ styles }) {
                             onSelect={() => { setText({ ...text, termsAndConditions: !text.termsAndConditions }) }}
                             isSelected={text.termsAndConditions}
                             disabled={false}
-
                         />
                     </View>
                     {text?.isModal &&
@@ -132,18 +131,18 @@ export default function FormComponent({ styles }) {
                             style={styles.inputButton}
                         />
                     </View>
-                </form>
+                </View>
                 : <View id='lala'>
                     <View style={styles.resultContainer}>
-                        <label htmlFor="name">Name :</label>
+                        <Text htmlFor="name">Name :</Text>
                         <Text style={styles.resultText}>{finalDetails?.name}</Text>
                     </View>
                     <View style={styles.resultContainer}>
-                        <label htmlFor="contact-name">Contact Number :</label>
+                        <Text htmlFor="contact-name">Contact Number :</Text>
                         <Text style={styles.resultText}>{finalDetails?.contact}</Text>
                     </View>
                     <View style={styles.resultContainer}>
-                        <label htmlFor="contact-name">Email Address :</label>
+                        <Text htmlFor="contact-name">Email Address :</Text>
                         <Text style={styles.resultText}>{finalDetails?.email}</Text>
                     </View>
                     <View style={styles.checkboxContainer}>
