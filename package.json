@@ -6,8 +6,8 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "webpack serve --mode='development' --config webpack.config.js",
-    "build": "rm -rf dist/ && webpack --mode=production --config webpack.config.js"
+    "web": "webpack serve --mode=development --config webpack.config.js --open",
+    "build": "expo build:web && rm -rf dist/ && webpack --mode=production --config webpack.config.js"
   },
   "dependencies": {
     "@expo/metro-runtime": "~3.1.3",
